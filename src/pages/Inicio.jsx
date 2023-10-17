@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Publicacion from '../components/Publicacion'
 import '../App.css'
-import Lista from '../components/Lista'
+
 
 const Inicio = ({setPublicaciones, publicaciones}) => {
 
@@ -52,9 +51,7 @@ const Inicio = ({setPublicaciones, publicaciones}) => {
             <br />
             <input type='button' onClick={handleClick} value="Publicar"/>
         </div>
-        {/* <div id='publicaciones'>
-            <Lista publicaciones={publicaciones} setPublicaciones={setPublicaciones} />
-        </div> */}
+       
     </div>
   )
 }

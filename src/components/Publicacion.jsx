@@ -6,6 +6,7 @@ const Publicacion = ({nombreUsuario, contenido, titulo, publicaciones, setPublic
 
     const [comentario, setComentario] = useState('')
     const [comentarios, setComentarios] = useState([])
+    const [admin, setAdmin] = useState('')
 
     function handleComentar() {
         localStorage.setItem('comentarios',JSON.stringify([...comentarios, comentario]))
@@ -16,6 +17,8 @@ const Publicacion = ({nombreUsuario, contenido, titulo, publicaciones, setPublic
     useEffect(() => {
         const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || []
         setComentarios(comentariosGuardados)
+        let ad = JSON.parse(localStorage.getItem('admin'));
+    setAdmin(ad);
     }, [])
 
     function deleteTarea(e) {
@@ -54,7 +57,7 @@ const Publicacion = ({nombreUsuario, contenido, titulo, publicaciones, setPublic
                     ))
                 }
             </section>
-            <input type='button' value="Eliminar" onClick={deleteTarea}/>
+           {admin && <input type='button' value="Eliminar" onClick={deleteTarea}/>}
         </main>
     </div>
   )

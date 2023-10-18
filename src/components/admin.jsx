@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "../App.css"
+import '../main.css'
 
 export default function admin() {
     const [contraseña, setContraseña] = useState('');
@@ -23,16 +24,18 @@ export default function admin() {
         const cierra = false;
         setAdmin(cierra);
         localStorage.setItem('admin', JSON.stringify(cierra));
+
     }
     return (
-        <div className="administrador">
+        <div className="principalAdmin">
             <form onSubmit={seciona}>
-                <h3>ingrese su contraseña</h3>
-                <input type="text" placeholder="nombre" />
-                <input type="text" placeholder="contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
-                <button className="secioni">iniciar sesion</button>
+                <h3 className='aviso'>ingrese su contraseña</h3>
+                <input className='inputTextAdmin'type="text" placeholder="nombre" />
+                <input className='inputTextAdmin'type="text" placeholder="contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
+                <button className="buttoncomment">iniciar sesion</button>
+            {admin && <h2>sos admin crack</h2>}
             </form>
-            <button className="NewPost" onClick={secionc}>cerrar sesion</button>
+            <button className="buttoncomment" onClick={secionc}>cerrar sesion</button>
         </div>
     );
 }

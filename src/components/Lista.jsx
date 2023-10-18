@@ -1,5 +1,6 @@
 import '../App.css'
 import Publicacion from "./Publicacion";
+import '../main.css'
 
 
 export default function Lista({publicaciones, setPublicaciones}){
@@ -13,7 +14,13 @@ export default function Lista({publicaciones, setPublicaciones}){
                     // O bien puedo usar un valor unico del elemento o instanciar una variable
                     // index que sera diferente por cada uno de los ciclos del map
                     <div key={index}>
-                        <Publicacion nombreUsuario={publicacion.nombreUsuario} contenido={publicacion.texto} titulo={publicacion.header} publicaciones={publicaciones} setPublicaciones={setPublicaciones} />
+                        <Publicacion 
+                        nombreUsuario={publicacion.nombreUsuario} 
+                        contenido={publicacion.texto} 
+                        titulo={publicacion.header} 
+                        publicaciones={publicaciones} 
+                        setPublicaciones={setPublicaciones} 
+                        />
                     </div>
                 ))
             }

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Inicio from './pages/Inicio'
 import './App.css'
+import './main.css'
 import { useState, useEffect } from 'react'
 import Lista from './components/Lista'
 import Admin from './components/admin'
@@ -17,15 +18,14 @@ function App() {
 
   return (
     <Router>
-      <nav style={{ height: '50px', backgroundColor: 'black', width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
-        <Link to="/">Inicio</Link>
-        <Link to="/publicaciones">Publicaciones</Link>
-        <Link to="/admin"> admin</Link>
+      <nav id='navbar'>
+        <Link className='links' to="/">Inicio</Link>
+        <Link className='links' to="/publicaciones">Publicaciones</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Inicio setPublicaciones={setPublicaciones} publicaciones={publicaciones} />} />
         <Route path="/publicaciones" element={<Lista publicaciones={publicaciones} setPublicaciones={setPublicaciones} />} />
-        <Route exact path="/admin" element={<Admin/>} />
+        <Route exact path="/admin" element={<Admin />} />
       </Routes>
 
     </Router>

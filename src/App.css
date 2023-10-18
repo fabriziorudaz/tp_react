@@ -1,39 +1,250 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: white;
+body {
+  background-color: #1a090d;
 }
 
-a {
-  font-weight: 800;
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-}
-
-#publicacion{
-  border: 2px solid black;
-}
-
-#root {
+.principal {
   text-align: center;
 }
 
-input{
+
+#navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 1.5em;
+  min-width: 960px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #221e22;
+  text-align: center;
+  border-bottom: 2px solid #ff7900;
+}
+
+@media screen and (min-width: 320px) {
+  #navbar {
+    min-width: 300px;
+    justify-content: space-around;
+  }
+}
+
+.links {
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Noto Sans', sans-serif;
+  color: #ff7900;
+}
+
+.links:hover {
+  text-shadow: #ff9e00 1px 0 10px;
+  transition: 0.25s ease-out;
+}
+
+.titulo {
+  padding: 15px 10px 0.25em 10px;
+  font-size: 7.5rem;
+  font-family: 'creepster', sans-serif;
+  text-decoration: none;
+  color: #ff6d00;
+  text-shadow: #240046 1px 0 10px;
+  text-align: center;
+}
+
+.titulo::after {
+  content: '🎃';
+  font-size: 6.5rem;
+}
+
+.titulo::before {
+  content: '🎃';
+  font-size: 6.5rem;
+}
+
+@media screen and (max-width:640px) {
+  .titulo::after {
+    content: '🎃';
+    font-size: 3rem;
+  }
+
+  .titulo::before {
+    content: '🎃';
+    font-size: 3rem;
+  }
+}
+
+.aviso {
+  color: #ff7900;
+  padding: 5px;
+  font-size: 20px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.inputText {
+  background-color: #eca72c;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 25px 10px 10px;
+}
+
+
+
+.inputTextarea {
+  background-color: #eca72c;
+  font-size: 20px;
+  margin-bottom: 1.5em;
+  border-radius: 15px;
+}
+
+@media screen and (max-width:640px) {
+  .inputTextarea {
+    font-size: 15px;
+  }
+}
+
+
+.submitbutton {
+  padding: 10px 40px 10px 40px;
+  font-size: 20px;
+  background-color: #240046;
+  color: #9d4edd;
+  border: 2px solid #3c096c;
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.submitbutton:hover {
+  border-color: #7b2cbf;
+  box-shadow: 0 0.5em 0.5em 0.2em #3c096c;
+  transform: translateY(-0.25em);
+}
+
+::placeholder {
   color: black;
+  opacity: 0.5;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-.nombre-usuario{
-  font-size: larger;
+.buttondelete {
+  padding: 5px 25px 5px 25px;
+  font-size: 16px;
+  background-color: #ff3f00;
+  color: #1f1300;
+  border: 2px solid #bc3908;
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-.titulo{
-  font-size: larger;
+.buttondelete:hover {
+  border-color: #bc3908;
+  box-shadow: 1px 1px 10px #bc3908;
 }
 
-.contenido{
-  size-adjust: 'auto';
-  max-width: '400px';
+
+.articulo {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px auto 20px auto;
+  padding: 5px;
+  border-top: 3px solid #5a189a;
+  border: 3px solid #3c096c;
+  background-color: #5a189a;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+@media screen and (max-width:640px) {
+  .articulo {
+    width: 350px;
+    width: fit-content;
+
+  }
+}
+
+
+
+
+.artiTitulo {
+  display: flex;
+  padding-bottom: 20px;
+  color: #ff6d00;
+  font-size: 3em;
+  font-family: 'creepster', sans-serif;
+  padding: 2px;
+}
+
+.autor {
+  margin-top: 10px;
+  font-size: 1.4em;
+  color: #ff9100;
+  font-family: 'Nosifer', sans-serif;
+}
+
+.autor::before {
+  content: '📝'
+}
+
+.publicacion {
+  padding: 10px 0 10px 0;
+  font-size: 1.2em;
+  color: #ff9e00;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+.avisoComent {
+  font-size: 0.7em;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #a8ba9a;
+  font-family: 'Nosifer', sans-serif;
+}
+
+.textareaComment {
+  background-color: #eca72c;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+.buttoncomment {
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
+  background-color: #9d4edd;
+  color: #1f1300;
+  border: 2px solid #5a189a;
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.buttoncomment:hover {
+  border-color: #5a189a;
+  box-shadow: 1px 1px 10px #3c096c;
+}
+
+
+.publicacionComments {
+  padding: 2px 0 2px 0;
+  font-size: 15px;
+  color: #ff9e00;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.inputTextAdmin {
+  background-color: #eca72c;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 25px 10px 10px;
+}
+
+.principalAdmin {
+  margin: 10px;
 }

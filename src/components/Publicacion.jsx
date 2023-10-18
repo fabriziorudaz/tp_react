@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
-import Markdown  from 'react-markdown';
+import Markdown from 'react-markdown';
 import '../App.css'
+import '../main.css'
 
-const Publicacion = ({nombreUsuario, contenido, titulo, publicaciones, setPublicaciones}) => {
+const Publicacion = ({ nombreUsuario, contenido, titulo, publicaciones, setPublicaciones }) => {
 
     const [comentario, setComentario] = useState('')
     const [comentarios, setComentarios] = useState([])
-    const [admin, setAdmin] = useState('')
 
-    function handleComentar() {
-        localStorage.setItem('comentarios',JSON.stringify([...comentarios, comentario]))
+    function handleComentar(){
+        localStorage.setItem('comentarios', JSON.stringify([...comentarios, comentario]))
         setComentarios([...comentarios, comentario])
         setComentario('')
     }
@@ -17,50 +17,46 @@ const Publicacion = ({nombreUsuario, contenido, titulo, publicaciones, setPublic
     useEffect(() => {
         const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || []
         setComentarios(comentariosGuardados)
-        let ad = JSON.parse(localStorage.getItem('admin'));
-    setAdmin(ad);
     }, [])
 
     function deleteTarea(e) {
         let id = +e.target.parentElement.id; /*El + hace exactamente lo mismo que parseInt()*/
         let nuevasPublicaciones = publicaciones.filter((publicacion, indice) => {
-          if (indice !== id) {
-            return publicacion;
-          }
-          else if(indice === id){
-            localStorage.removeItem(publicacion, indice);
-          }
+            if (indice !== id) {
+                return publicacion;
+            }
+            else if (indice === id) {
+                localStorage.removeItem(publicacion, indice);
+            }
         });
         setPublicaciones(nuevasPublicaciones);
     }
 
     return (
-    <div id='main-publicacion'>
-        <header>
-            <p className='nombre-usuario'>{nombreUsuario}</p>
-        </header>
-        <main>
-            <section>
-                <p className='titulo'>{titulo}</p>
-                <div className='contenido'><Markdown>{contenido}</Markdown></div>
-            </section>
-            <section className='comentarios'>
-                <textarea 
-                className='comentario'
-                onChange={(e) => {setComentario(e.target.value)}}
-                /> <br />
-                <input onClick={handleComentar} type='button' value="Comentar"/>
-                <h4>Comentarios</h4>
-                {
-                    comentarios.map((comentario, idx) => (
-                        <p key={idx}>{comentario}</p>
-                    ))
-                }
-            </section>
-           {admin && <input type='button' value="Eliminar" onClick={deleteTarea}/>}
-        </main>
-    </div>
-  )
+        <div className='articulo'>
+            <main>
+                <section>
+                    <p className='artiTitulo'>{titulo}</p>
+                    <p className='autor'>{nombreUsuario}</p>
+                    <div className='publicacion'><Markdown>{contenido}</Markdown></div>
+                </section>  
+                <h4 className='avisoComent'>¡Comenta algo!</h4>
+                    <textarea
+                        className='textareaComment'
+                        onChange={(e) => { setComentario(e.target.value) }}
+                    /> <br />   
+                    <input className='buttoncomment' onClick={handleComentar} type='button' value="Comentar" />  
+                    <h4 className='avisoComent '>comentarios</h4>  
+                    {
+                        comentarios.map((comentario, idx) => (
+                            <p className='publicacionComments'key={idx}>{comentario}</p>
+                        ))
+                    }
+
+                <input className='buttondelete'type='button' value="Eliminar" onClick={deleteTarea} />
+            </main>
+        </div>
+    )
 }
 
 export default Publicacion
